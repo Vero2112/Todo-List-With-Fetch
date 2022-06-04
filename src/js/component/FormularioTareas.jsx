@@ -16,7 +16,7 @@ const FormularioTareas = (props) => {
 
 	return (
 		<>
-			<div className="position-absolute top-0 start-50 translate-middle-x">
+			<div className="position-absolute top-0 start-50 translate-middle-x mt-2">
 				<input type="text" onChange={change} />
 				<button className="btn-success" onClick={guardarNombre}>
 					Guardar
