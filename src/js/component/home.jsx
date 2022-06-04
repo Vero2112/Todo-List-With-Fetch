@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import FormularioTareas from "./FormularioTareas.jsx";
 
-//create your first component
 const Home = () => {
+	const [tareas, cambiarTareas] = useState([]);
+	const agregarTarea = (nombreTarea) => {
+		// const auxTarea = tareas.concat(nombreTarea);
+		const auxTarea = [...tareas, nombreTarea];
+		cambiarTareas(auxTarea);
+	};
+
+	const eliminarTarea = (index) => {
+		const auxTarea = tareas.filter((nombreTarea, auxIndex) => {
+			// [4, 9, 0].splice()
+			if (index !== auxIndex) return nombreTarea;
+		});
+		cambiarTareas(auxTarea);
+	};
+
 	return (
 		<div>
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+			<FormularioTareas agregarTarea={agregarTarea} />
+			{tareas.map((nombreTarea, index) => {
+				return (
+					<div
+						// className="position-absolute top-50 start-50 translate-middle"
+						key={index}>
+						<ul>
+							<li>
+								{nombreTarea}
+								<button
+									className="btn-danger"
+									onClick={() => eliminarTarea(index)}>
+									X
+								</button>
+							</li>
+						</ul>
+					</div>
+				);
+			})}
 		</div>
 	);
 };
