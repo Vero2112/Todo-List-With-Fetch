@@ -23,19 +23,19 @@ const Home = () => {
 			<FormularioTareas agregarTarea={agregarTarea} />
 			{tareas.map((nombreTarea, index) => {
 				return (
-					<div
-						// className="position-absolute top-50 start-50 translate-middle"
-						key={index}>
-						<ul>
-							<li>
-								{nombreTarea}
-								<button
-									className="btn-danger"
-									onClick={() => eliminarTarea(index)}>
-									X
-								</button>
-							</li>
-						</ul>
+					<div className="lista">
+						<div className="center-me" key={index}>
+							<ul>
+								<li>
+									{nombreTarea}
+									<button
+										className="btn-danger m-2"
+										onClick={() => eliminarTarea(index)}>
+										X
+									</button>
+								</li>
+							</ul>
+						</div>{" "}
 					</div>
 				);
 			})}
