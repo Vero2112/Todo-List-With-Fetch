@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/index.css";
+import "../../styles/FormularioTareas.css";
 const FormularioTareas = (props) => {
 	const [nombreTarea, cambiarNombreTarea] = useState({
 		label: "",

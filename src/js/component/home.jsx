@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import FormularioTareas from "./FormularioTareas.jsx";
-import "../../styles/index.css";
+import "../../styles/FormularioTareas.css";
 const Home = () => {
 	const [tareas, cambiarTareas] = useState([]);
 	const agregarTarea = (nombreTarea) => {
