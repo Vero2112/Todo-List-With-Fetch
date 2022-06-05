@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import FormularioTareas from "./FormularioTareas.jsx";
-
+import "../../styles/index.css";
 const Home = () => {
 	const [tareas, cambiarTareas] = useState([]);
 	const agregarTarea = (nombreTarea) => {
@@ -23,20 +23,18 @@ const Home = () => {
 			<FormularioTareas agregarTarea={agregarTarea} />
 			{tareas.map((nombreTarea, index) => {
 				return (
-					<div className="lista">
-						<div className="center-me" key={index}>
-							<ul>
-								<li>
-									{nombreTarea}
-									<button
-										className="btn-danger m-2"
-										onClick={() => eliminarTarea(index)}>
-										X
-									</button>
-								</li>
-							</ul>
-						</div>{" "}
-					</div>
+					<>
+						<div
+							className="d-flex justify-content-between border-bottom w-25 center-me "
+							key={index}>
+							{nombreTarea}
+							<button
+								className="btn btn-danger"
+								onClick={() => eliminarTarea(index)}>
+								X
+							</button>
+						</div>
+					</>
 				);
 			})}
 		</div>
