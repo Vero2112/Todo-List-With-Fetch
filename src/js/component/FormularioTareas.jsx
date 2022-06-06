@@ -1,5 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/FormularioTareas.css";
+import {
+	obtenerTareas,
+	crearTarea,
+	borrarLista,
+	modificarLista,
+} from "../api/api.js";
 const FormularioTareas = (props) => {
 	const [nombreTarea, cambiarNombreTarea] = useState({
 		label: "",
@@ -21,6 +27,23 @@ const FormularioTareas = (props) => {
 			props.agregarTarea(nombreTarea);
 		}
 	};
+	const obtenerTodasTareas = () => {
+		obtenerTareas()
+			.then((res) => {
+				return res.json();
+			})
+			.then((data) => {
+				// if (data[0].label !== "sample task") {
+				cambiarTareas(data);
+				// }
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+	useEffect(() => {
+		obtenerTodasTareas();
+	}, []);
 
 	return (
 		<>
@@ -37,6 +60,7 @@ const FormularioTareas = (props) => {
 									type="text"
 									onChange={change}
 									onKeyPress={guardarNombre}
+									placeholder="Escribe la tarea"
 								/>
 							</div>
 						</div>
