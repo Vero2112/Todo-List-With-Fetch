@@ -16,14 +16,11 @@ const FormularioTareas = () => {
 		cambiarNombreTarea({ label: "" });
 		crearTarea(auxTarea);
 	};
-	// const change = (e) => {
-	// 	const value = e.target.value;
-	// 	cambiarNombreTarea(value);
-	// };
+
 
 	const eliminarTarea = (index) => {
 		const auxTarea = tareas.filter((nombreTarea, auxIndex) => {
-			// [4, 9, 0].splice()
+
 			if (index !== auxIndex) return nombreTarea;
 		});
 		cambiarTareas(auxTarea);
