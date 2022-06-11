@@ -6,15 +6,31 @@ import {
 	borrarLista,
 	modificarLista,
 } from "../api/api.js";
-const FormularioTareas = (props) => {
+
+const FormularioTareas = () => {
+	const [tareas, cambiarTareas] = useState([]);
 	const [nombreTarea, cambiarNombreTarea] = useState({
-		label: "",
+		label: "dgd",
 		done: false,
 	});
+
+	const agregarTarea = (nombreTarea) => {
+		// const auxTarea = tareas.concat(nombreTarea);
+		const auxTarea = [...tareas, nombreTarea];
+		cambiarTareas(auxTarea);
+	};
 
 	const change = (e) => {
 		const value = e.target.value;
 		cambiarNombreTarea(value);
+	};
+
+	const eliminarTarea = (index) => {
+		const auxTarea = tareas.filter((nombreTarea, auxIndex) => {
+			// [4, 9, 0].splice()
+			if (index !== auxIndex) return nombreTarea;
+		});
+		cambiarTareas(auxTarea);
 	};
 
 	const guardarNombre = (e) => {
@@ -24,9 +40,10 @@ const FormularioTareas = (props) => {
 				e.code === "NumpadEnter") ||
 			e.code === "Enter"
 		) {
-			props.agregarTarea(nombreTarea);
+			agregarTarea(nombreTarea);
 		}
 	};
+
 	const obtenerTodasTareas = () => {
 		obtenerTareas()
 			.then((res) => {
@@ -34,7 +51,8 @@ const FormularioTareas = (props) => {
 			})
 			.then((data) => {
 				// if (data[0].label !== "sample task") {
-				cambiarTareas(data);
+				cambiarNombreTarea(data);
+				console.log(data);
 				// }
 			})
 			.catch((err) => {
@@ -67,6 +85,22 @@ const FormularioTareas = (props) => {
 					</div>
 				</div>
 			</div>
+			{tareas.map((nombreTarea, index) => {
+				return (
+					<>
+						<div
+							className="d-flex justify-content-between border-bottom w-25 center-me "
+							key={index}>
+							{nombreTarea}
+							<button
+								className="btn btn-danger"
+								onClick={() => eliminarTarea(index)}>
+								X
+							</button>
+						</div>
+					</>
+				);
+			})}
 		</>
 	);
 };
