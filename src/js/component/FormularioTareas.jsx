@@ -94,9 +94,7 @@ const FormularioTareas = () => {
 						onClick={() => eliminarTarea(index)}>
 						X
 					</button>
-				</div>
-
-				// );
+				</div>		
 			))}
 		</>
 	);
