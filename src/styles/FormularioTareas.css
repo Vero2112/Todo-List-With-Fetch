@@ -1,15 +1,9 @@
 body{
     margin: 0;
-    background: white
+    background:rgb(67, 164, 216);
   }
 
-.center-me {
-    margin: 0 auto;
-    background: white;  /*Gray Backgorund to make the div visible */ 
-    width: 200px;  /*This should be the max-widh of your website*/ 
-    display: inlinr-block;
-   
-  }
+
 
   h1 {
     color: rgb(67, 164, 216);
