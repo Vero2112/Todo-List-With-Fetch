@@ -17,15 +17,6 @@ export const crearTarea = (data) => {
 	});
 };
 
-export const borrarLista = () => {
-	return fetch("https://assets.breatheco.de/apis/fake/todos/user/Vero", {
-		method: "DELETE",
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
-};
-
 export const modificarLista = (data) => {
 	return fetch("https://assets.breatheco.de/apis/fake/todos/user/Vero", {
 		method: "PUT",

@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/FormularioTareas.css";
-import {
-	obtenerTareas,
-	crearTarea,
-	borrarLista,
-	modificarLista,
-} from "../api/api.js";
+import { obtenerTareas, crearTarea, modificarLista } from "../api/api.js";
 
 const FormularioTareas = () => {
 	const [tareas, cambiarTareas] = useState([]);
@@ -19,8 +14,8 @@ const FormularioTareas = () => {
 		const auxTarea = [...tareas, nombredelaTarea];
 		cambiarTareas(auxTarea);
 		cambiarNombreTarea({ label: "" });
+		crearTarea(auxTarea);
 	};
-
 	// const change = (e) => {
 	// 	const value = e.target.value;
 	// 	cambiarNombreTarea(value);
@@ -32,6 +27,7 @@ const FormularioTareas = () => {
 			if (index !== auxIndex) return nombreTarea;
 		});
 		cambiarTareas(auxTarea);
+		modificarLista(auxTarea);
 	};
 
 	const guardarNombre = (e) => {
@@ -39,7 +35,7 @@ const FormularioTareas = () => {
 			(nombreTarea &&
 				nombreTarea.label.length > 0 &&
 				e.code === "NumpadEnter") ||
-			e.code === "Enter"
+			(nombreTarea && nombreTarea.label.length > 0 && e.code === "Enter")
 		) {
 			agregarTarea(nombreTarea);
 		}
@@ -51,10 +47,8 @@ const FormularioTareas = () => {
 				return res.json();
 			})
 			.then((data) => {
-				// if (data[0].label !== "sample task") {
 				cambiarTareas(data);
 				console.log(data);
-				// }
 			})
 			.catch((err) => {
 				console.log(err);
