@@ -1,17 +1,8 @@
-body{
-    margin: 0;
-    background:rgb(67, 164, 216);
-  }
-
-
-
-  h1 {
-    color: rgb(67, 164, 216);
+body {
+  margin: 0;
+  background: rgb(67, 164, 216);
 }
 
-
-
-/* .lista{
-margin-top: 50px
-
-} */
+h1 {
+  color: rgb(67, 164, 216);
+}
